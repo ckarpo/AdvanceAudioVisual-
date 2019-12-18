@@ -3,9 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-//    ofBackground(255);
+
    ofSetFrameRate(60);
-//    ofSetCircleResolution(50);
+
     
     
     sampleRate=44100;
@@ -70,9 +70,7 @@ void ofApp::audioOut(float *output, int bufferSize, int nChannels){
 
         }
 
-        //currentSample=beat1.playOnce();
-//        currentSample= osc3.sinewave(440);
-        //mix.stereo(currentSample, outputs, 0.5);
+       
         
         output[i *nChannels]=currentSample;
         output[i *nChannels+1]=currentSample;
