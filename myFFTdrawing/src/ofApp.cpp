@@ -18,11 +18,12 @@ void ofApp::setup(){
     option=0;
 
    
-    
+    //audio setup
     /* This is stuff you always need.*/
     sampleRate = 44100; /* Sampling Rate */
     int initialBufferSize = 512;    /* Buffer Size. you have to fill this buffer with sound*/
     
+    //fft setup
     fftSize = 1024;
     mfft.setup(fftSize, 512, 256);
     ifft.setup(fftSize, 512, 256);
@@ -51,7 +52,7 @@ void ofApp::setup(){
     soundStream.setup(settings);
     
    // samp.load("/Users/christinakarpodini/Desktop/of_v0.10.0_osx_release/apps/myApps/myFFTdrawing/bin/data/beat2.wav");
-
+    // i am keeping this sound for debug 
     
     samp.load("/Users/christinakarpodini/Desktop/of_v0.10.0_osx_release/apps/myApps/myFFTdrawing/bin/data/joy_mono_16.wav");
 }
@@ -64,6 +65,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    //box drawing
     int point1X=ofGetWidth()/3+100;
     int point1Y=ofGetHeight()/3+100;
     int point1Z=ofGetHeight()/2;
@@ -115,6 +117,7 @@ void ofApp::audioOut(ofSoundBuffer& output) {
     for (size_t i = 0; i < output.getNumFrames(); ++i) {
         sample=samp.play();
         
+        //all this cide is from the class example
         if (mfft.process(sample)) {
             
             mfft.magsToDB();
